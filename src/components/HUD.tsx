@@ -87,7 +87,7 @@ export const HUD: React.FC<HUDProps> = ({
         <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 flex flex-col gap-1.5">
 
           <a
-            href="https://www.entri.me"
+            href="https://entri.app/explore/free-coding-courses/"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-1.5 select-none"
