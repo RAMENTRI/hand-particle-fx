@@ -25,8 +25,6 @@ export const HUD: React.FC<HUDProps> = ({
     <>
       {/* ── Top-left: status ──────────────────────────────────────────── */}
       <div className="fixed top-2 left-2 sm:top-4 sm:left-4 z-30 flex flex-col gap-1.5">
-
-        {/* Tracking status */}
         <div className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
           <div
             className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full flex-shrink-0 ${
@@ -42,22 +40,11 @@ export const HUD: React.FC<HUDProps> = ({
           </span>
         </div>
 
-        {/* FPS — hidden on very small screens */}
         <div className="hidden xs:flex sm:flex bg-black/60 backdrop-blur-md border border-white/10 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
           <span className="font-display text-[9px] sm:text-[10px] text-white/40 tracking-widest">
             {fps} FPS · {(particleCount / 1000).toFixed(0)}K
           </span>
         </div>
-
-        {/* Face mode badge (disabled but kept for future use) */}
-        {!isTracking && isFaceTracking && (
-          <div className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-[#ff44cc]/30 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#ff44cc] animate-pulse" />
-            <span className="font-body text-[10px] sm:text-xs text-[#ff44cc]/80 uppercase tracking-wider">
-              Face Mode
-            </span>
-          </div>
-        )}
       </div>
 
       {/* ── Top-right: active gesture card ───────────────────────────── */}
@@ -74,7 +61,6 @@ export const HUD: React.FC<HUDProps> = ({
             <div className="font-display text-[10px] sm:text-sm text-white/90 tracking-wide leading-tight">
               {action?.label ?? "No Gesture"}
             </div>
-            {/* Shape name — hidden on small screens to save space */}
             <div className="hidden sm:block font-body text-[10px] text-white/40 mt-1 uppercase tracking-widest">
               {action?.shape ?? "—"}
             </div>
@@ -82,39 +68,45 @@ export const HUD: React.FC<HUDProps> = ({
         </div>
       </div>
 
-      {/* ── Brand / watermark card ────────────────────────────────────── */}
-      <div className="fixed bottom-[72px] sm:bottom-[80px] left-2 sm:left-4 z-30">
-        <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 flex flex-col gap-1.5">
-
+      {/* ── Brand / watermark card: ENTRI CODING ────────────────────────── */}
+      <div className="fixed bottom-[85px] sm:bottom-[100px] left-2 sm:left-6 z-30">
+        <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl px-4 py-4 flex flex-col gap-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           <a
             href="https://www.entri.me"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-1.5 select-none"
+            className="group flex flex-col items-start gap-3 select-none"
           >
-            {/* Glowing dot */}
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00d4ff] shadow-[0_0_6px_#00d4ff] flex-shrink-0 group-hover:shadow-[0_0_10px_#00d4ff] transition-all" />
-            <span
-              className="font-display text-[10px] sm:text-xs tracking-widest uppercase transition-all duration-300"
-              style={{
-                background: "linear-gradient(90deg, #00d4ff, #a855f7)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              entri coding
-            </span>
+            {/* Entri SVG Logo */}
+            <img 
+              src="https://cloudfront.entri.app/entri-logo/Entri-logo-new-512x188.svg" 
+              alt="Entri Logo" 
+              className="h-7 sm:h-9 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            
+            <div className="flex items-center gap-2">
+              {/* Glowing Status Dot */}
+              <span className="w-2 h-2 rounded-full bg-[#00d4ff] shadow-[0_0_10px_#00d4ff] flex-shrink-0 group-hover:scale-125 transition-all" />
+              
+              <span
+                className="font-display text-base sm:text-lg font-black tracking-[0.15em] uppercase transition-all duration-300"
+                style={{
+                  background: "linear-gradient(90deg, #00d4ff, #a855f7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  filter: "drop-shadow(0 0 8px rgba(0,212,255,0.3))"
+                }}
+              >
+                entri coding
+              </span>
+            </div>
           </a>
-
-          
-
         </div>
       </div>
 
       {/* ── Bottom: gesture guide bar ─────────────────────────────────── */}
       <div className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 w-full px-2 sm:px-0 sm:w-auto">
         <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl px-2 py-2 sm:px-4 sm:py-3 mx-auto">
-          {/* Scroll hint gradient on right edge */}
           <div className="relative">
             <div
               className="flex gap-2 sm:gap-3 items-center overflow-x-auto"
