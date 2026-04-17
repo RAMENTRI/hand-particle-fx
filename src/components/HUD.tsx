@@ -102,7 +102,7 @@ export const HUD: React.FC<HUDProps> = ({
                 WebkitTextFillColor: "transparent",
               }}
             >
-              entri coding
+              powered by ENTRI CODING to know more click here
             </span>
           </a>
 
